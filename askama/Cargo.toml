@@ -25,6 +25,7 @@ serde-json = ["askama_derive/serde-json", "askama_escape/json", "serde", "serde_
 urlencode = ["askama_derive/urlencode", "percent-encoding"]
 with-actix-web = ["askama_derive/with-actix-web"]
 with-axum = ["askama_derive/with-axum"]
+with-poem = ["askama_derive/with-poem"]
 with-rocket = ["askama_derive/with-rocket"]
 with-warp = ["askama_derive/with-warp"]
 

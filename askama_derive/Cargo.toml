@@ -21,6 +21,7 @@ serde-json = []
 num-traits = []
 with-actix-web = []
 with-axum = []
+with-poem = []
 with-rocket = []
 with-warp = []
 

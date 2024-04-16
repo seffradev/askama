@@ -71,6 +71,8 @@ impl<'a> Generator<'a> {
         self.impl_actix_web_responder(&mut buf)?;
         #[cfg(feature = "with-axum")]
         self.impl_axum_into_response(&mut buf)?;
+        #[cfg(feature = "with-poem")]
+        self.impl_poem_into_response(&mut buf)?;
         #[cfg(feature = "with-rocket")]
         self.impl_rocket_responder(&mut buf)?;
         #[cfg(feature = "with-warp")]
@@ -175,6 +177,20 @@ impl<'a> Generator<'a> {
              -> ::askama_axum::axum_core::response::Response {",
         )?;
         buf.writeln("::askama_axum::into_response(&self)")?;
+        buf.writeln("}")?;
+        buf.writeln("}")
+    }
+
+    // Implement Poem's `IntoResponse`.
+    #[cfg(feature = "with-poem")]
+    fn impl_poem_into_response(&mut self, buf: &mut Buffer) -> Result<(), CompileError> {
+        self.write_header(buf, "::askama_poem::IntoResponse", None)?;
+        buf.writeln("#[inline]")?;
+        buf.writeln(
+            "fn into_response(self)\
+             -> ::askama_poem::Response {",
+        )?;
+        buf.writeln("::askama_poem::into_response(&self)")?;
         buf.writeln("}")?;
         buf.writeln("}")
     }

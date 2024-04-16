@@ -14,7 +14,7 @@ workspace = ".."
 readme = "README.md"
 
 [dependencies]
-askama = { version = "0.12", path = "../askama", default-features = false, features = ["with-poem", "mime", "mime_guess"] }
+askama = { version = "0.13", path = "../askama", default-features = false, features = ["with-poem", "mime", "mime_guess"] }
 http = "0.2"
 poem = "1.3"
 
